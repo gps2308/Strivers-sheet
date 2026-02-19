@@ -1,12 +1,15 @@
 package sorting;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Mergesort {
-    mergesort(int a[],low,high)
+   public static int[] mergesort(int a[],int low,int high)
     {
         if(low>=high)
             return a;
         else{
-            int mis=(low+high)/2;
+            int mid=(low+high)/2;
             mergesort(a,low,mid);
             mergesort(a,mid+1,high);
             merge(a,low,mid,high);
@@ -14,9 +17,9 @@ public class Mergesort {
         }
         return a;
     }
-    merge(int a[],int low,int mid,int high)
+   public static void merge(int a[],int low,int mid,int high)
     {
-        int temp[]=new int[high+1]
+        ArrayList <Integer> temp=new ArrayList<>();
         int left=low;
         int right = mid+1;
         while(left<=mid && right<=high)
@@ -42,11 +45,12 @@ public class Mergesort {
             temp.add(a[left]);
             left++;
         }
-        for(int i=0;i<=high;i++)
+        for(int i=low;i<=high;i++)
         {
-            a[i]=temp[i];
+            a[i]=temp.get(i-low);
         }
     }
+    public static void main (String args[])
     {
     Scanner sc=new Scanner(System.in);
         System.out.println("enter size of array");
